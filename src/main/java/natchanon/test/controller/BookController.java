@@ -19,7 +19,7 @@ public class BookController {
     }
 
     @PostMapping("/books")
-    public void saveBook(@RequestBody @Valid  BookRequest bookRequest) {
+    public void saveBook(@Valid @RequestBody BookRequest bookRequest) {
         bookService.save(bookRequest);
     }
 }

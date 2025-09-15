@@ -6,6 +6,7 @@ import natchanon.test.dto.BookRequest;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.time.chrono.ThaiBuddhistDate;
 
 @Entity
 @Table(name = "book")
@@ -21,7 +22,7 @@ public class Book {
     @Column(name = "author")
     private String author;
     @Column(name = "published_date")
-    private Date publishedDate;
+    private ThaiBuddhistDate publishedDate;
 
     public Book(BookRequest bookRequest) {
         this.title = bookRequest.getTitle();
