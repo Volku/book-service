@@ -2,6 +2,7 @@ package natchanon.test.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import natchanon.test.dto.BookRequest;
 import natchanon.test.dto.BookResponse;
 import natchanon.test.entity.Book;
 import natchanon.test.repository.BookRepository;
@@ -17,5 +18,9 @@ public class BookService {
         BookResponse result = new BookResponse(bookRepository.findByAuthor(authorName));
         log.info(result.bookList.get(0));
         return result;
+    }
+
+    public void save(BookRequest bookRequest) {
+        bookRepository.save(new Book(bookRequest));
     }
 }
