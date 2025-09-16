@@ -15,9 +15,7 @@ public class BookService {
     private final BookRepository bookRepository;
 
     public BookResponse findBookByAuthorName(String authorName) {
-        BookResponse result = new BookResponse(bookRepository.findByAuthor(authorName));
-        log.info(result.bookList.get(0));
-        return result;
+        return new BookResponse(bookRepository.findByAuthor(authorName));
     }
 
     public void save(BookRequest bookRequest) {

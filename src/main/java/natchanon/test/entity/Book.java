@@ -1,17 +1,21 @@
 package natchanon.test.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import natchanon.test.dto.BookRequest;
-import org.springframework.stereotype.Service;
 
 import java.sql.Date;
-import java.time.chrono.ThaiBuddhistDate;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "book")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -22,11 +26,12 @@ public class Book {
     @Column(name = "author")
     private String author;
     @Column(name = "published_date")
-    private ThaiBuddhistDate publishedDate;
+    private Date publishedDate;
 
     public Book(BookRequest bookRequest) {
         this.title = bookRequest.getTitle();
         this.author = bookRequest.getAuthor();
-        this.publishedDate = bookRequest.getPublishedDate();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.publishedDate = Date.valueOf(LocalDate.parse(bookRequest.getPublishedDate(), dateTimeFormatter));
     }
 }
