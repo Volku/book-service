@@ -1,5 +1,6 @@
 package natchanon.test.entity;
 
+import io.micrometer.common.util.StringUtils;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,8 @@ public class Book {
         this.title = bookRequest.getTitle();
         this.author = bookRequest.getAuthor();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        this.publishedDate = Date.valueOf(LocalDate.parse(bookRequest.getPublishedDate(), dateTimeFormatter));
+        if(!StringUtils.isBlank(bookRequest.getPublishedDate())) {
+            this.publishedDate = Date.valueOf(LocalDate.parse(bookRequest.getPublishedDate(), dateTimeFormatter));
+        }
     }
 }

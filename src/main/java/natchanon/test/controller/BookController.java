@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import natchanon.test.dto.BookRequest;
 import natchanon.test.dto.BookResponse;
 import natchanon.test.service.BookService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
