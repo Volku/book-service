@@ -7,3 +7,7 @@ CREATE TABLE IF NOT EXISTS book(
     published_date DATE
 );
 CREATE INDEX idx_author ON book(author);
+CREATE TABLE IF NOT EXISTS book_seq (
+        next_val bigint
+    );
+INSERT IGNORE INTO book_seq values ( 1 );
